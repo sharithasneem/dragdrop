@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import Board from './Board';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { observe } from './Game'
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
-     <Board knightPosition={[1, 7]}/> 
+    {
+    observe((knightPosition) =>
+    root.render(<Board knightPosition={knightPosition}/>) 
+    )}
   </React.StrictMode>
 );
 
